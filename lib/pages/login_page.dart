@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_master_course/utils/routes.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  String name = "";
+  bool changeButton = false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +25,11 @@ class LoginPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Text(
-              "Welcome",
-              style: TextStyle(
+            Text(
+              "Welcome $name",
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 28,
+                fontSize: 24,
               ),
             ),
             const SizedBox(
@@ -37,6 +45,11 @@ class LoginPage extends StatelessWidget {
                       hintText: "Enter Username",
                       label: Text("Username"),
                     ),
+                    onChanged: (value) {
+                      setState(() {
+                        name = value;
+                      });
+                    },
                   ),
                   TextFormField(
                     obscureText: true,
@@ -52,11 +65,34 @@ class LoginPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            ElevatedButton(
-              onPressed: () {
+            InkWell(
+              onTap: () async {
+                setState(() {
+                  changeButton = true;
+                });
+                await Future.delayed(const Duration(seconds: 1));
                 Navigator.pushNamed(context, MyRoutes.homeRoute);
               },
-              child: const Text("Login"),
+              child: AnimatedContainer(
+                alignment: Alignment.center,
+                height: 50,
+                width: changeButton ? 50 : 120,
+                child: changeButton
+                    ? const Icon(
+                        Icons.done,
+                        color: Colors.white,
+                      )
+                    : const Text(
+                        "Login",
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                duration: const Duration(seconds: 1),
+                decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                    borderRadius: changeButton
+                        ? BorderRadius.circular(50)
+                        : BorderRadius.circular(10)),
+              ),
             ),
           ],
         ),

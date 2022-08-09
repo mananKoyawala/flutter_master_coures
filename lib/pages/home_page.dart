@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
         title: const Text("Catalog App"),
       ),
       body: Center(child: Text("My Name is $name")),
-      drawer: const Drawer(),
+      // drawer: const Drawer(),
     );
   }
 }
