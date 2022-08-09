@@ -5,17 +5,18 @@ import 'pages/home_page.dart';
 void main() => runApp(
       MaterialApp(
         title: "Flutter Course",
-        // home: const HomePage(),
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.light, //for theme mode light, dark or system
         darkTheme: ThemeData(
           brightness: Brightness.dark,
           primarySwatch: Colors.red,
+          fontFamily: 'QuickSand',
         ), //to Apply dark theme properties,
         theme: ThemeData(
           primarySwatch: Colors.deepPurple,
+          fontFamily: 'QuickSand',
         ), //to apply theme on light mode
-        initialRoute: "/home",
+        initialRoute: "/",
         routes: {
           "/": (context) => const LoginPage(),
           "/home": (context) => const HomePage(),
