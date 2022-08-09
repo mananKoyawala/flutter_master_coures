@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './home_page.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -10,17 +11,11 @@ void main() => runApp(
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
-  final day = 30;
-  String name = "Manan";
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Catalog App"),
-      ),
-      body: Center(
-        child: Text("Flutter in $day by $name"),
-      ),
+    return const Scaffold(
+      body: HomePage(),
     );
   }
 }
