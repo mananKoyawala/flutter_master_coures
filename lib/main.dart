@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'utils/routes.dart';
 import 'pages/login_page.dart';
 import 'pages/home_page.dart';
 
@@ -19,8 +20,8 @@ void main() => runApp(
         initialRoute: "/",
         routes: {
           "/": (context) => const LoginPage(),
-          "/home": (context) => const HomePage(),
-          "/login": (context) => const LoginPage(),
+          MyRoutes.homeRoute: (context) => const HomePage(),
+          MyRoutes.loginRoute: (context) => const LoginPage(),
         },
       ),
     );
