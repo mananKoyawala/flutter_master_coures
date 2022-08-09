@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import './home_page.dart';
+import 'pages/home_page.dart';
 
 void main() => runApp(
       MaterialApp(
         title: "Flutter Course",
-        home: MyApp(),
+        home: const HomePage(),
         debugShowCheckedModeBanner: false,
+        themeMode: ThemeMode.light, //for theme mode light, dark or system
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          primarySwatch: Colors.red,
+        ), //to Apply dark theme properties,
+        theme: ThemeData(
+          primarySwatch: Colors.purple,
+        ), //to apply theme on light mode
       ),
     );
-
-class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: HomePage(),
-    );
-  }
-}
