@@ -75,6 +75,9 @@ flutter:
     - family: QuickSand
       fonts:
         - asset: assets/fonts/Quicksand-Regular.otf
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/OpenSans-Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

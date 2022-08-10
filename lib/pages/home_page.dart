@@ -9,10 +9,16 @@ class HomePage extends StatelessWidget {
     String name = "Manan";
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Catalog App"),
+        title: const Text(
+          "Catalog App",
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+              fontFamily: 'OpenSans'),
+        ),
       ),
       body: Center(child: Text("My Name is $name")),
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
     );
   }
 }
