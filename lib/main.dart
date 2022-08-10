@@ -17,7 +17,7 @@ void main() => runApp(
           primarySwatch: Colors.deepPurple,
           fontFamily: 'QuickSand',
         ), //to apply theme on light mode
-        initialRoute: "/",
+        initialRoute: MyRoutes.homeRoute,
         routes: {
           "/": (context) => const LoginPage(),
           MyRoutes.homeRoute: (context) => const HomePage(),

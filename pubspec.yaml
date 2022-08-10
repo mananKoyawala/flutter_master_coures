@@ -74,9 +74,7 @@ flutter:
   fonts:
     - family: QuickSand
       fonts:
-        - asset: assets/fonts/Quicksand-Bold.otf
         - asset: assets/fonts/Quicksand-Regular.otf
-          style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
