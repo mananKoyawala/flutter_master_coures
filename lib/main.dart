@@ -5,6 +5,7 @@ import 'pages/login_page.dart';
 import 'pages/home_page.dart';
 
 void main() => runApp(
+      // Day 11 we Learn about constraint, context, or widget tree, element tree, render tree
       MaterialApp(
         title: "Flutter Course",
         debugShowCheckedModeBanner: false,

@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
               fontFamily: 'OpenSans'),
         ),
       ),
-      body: Center(child: Text("My Name is $name")),
+      body: Center(child: Text(context.runtimeType.toString())),
       drawer: const MyDrawer(),
     );
   }
