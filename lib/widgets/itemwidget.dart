@@ -20,7 +20,10 @@ class ItemWidget extends StatelessWidget {
             item.name,
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          subtitle: Text(item.desc),
+          subtitle: Text(
+            item.desc,
+            style: const TextStyle(fontFamily: 'OpenSans', fontSize: 12),
+          ),
           trailing: Text(
             "\$${item.price.toString()}",
             textScaleFactor: 1.2,

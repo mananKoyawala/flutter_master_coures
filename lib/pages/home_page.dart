@@ -20,19 +20,23 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    var catalogJSON = await rootBundle.loadString(
+    // await Future.delayed(Duration(seconds: 2));
+    final catalogJSON = await rootBundle.loadString(
         "assets/files/product.json"); //get File From assets/file directory
     //rootBundle is used for background services that runs in background
-    var decodedData = jsonDecode(
+    final decodedData = jsonDecode(
         catalogJSON); //decode json Data, this data is avilable in Map
     var productsData = decodedData[
         "products"]; //print only product data not return whole products
-    print(productsData);
+    CatalogModel.items = List.from(productsData)
+        .map<Item>((item) => Item.fromMap(item))
+        .toList();
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    final dummyList = List.generate(10, (index) => CatalogModel.items[0]);
+    // final dummyList = List.generate(10, (index) => CatalogModel.items[0]);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -43,16 +47,20 @@ class _HomePageState extends State<HomePage> {
               fontFamily: 'OpenSans'),
         ),
       ),
-      body: ListView.builder(
-        // itemCount: CatalogModel.items.length,
-        itemCount: dummyList.length,
-        itemBuilder: (context, index) {
-          return ItemWidget(
-            item: //CatalogModel.items[index]
-                dummyList[index],
-          );
-        },
-      ),
+      body: CatalogModel.items != null && CatalogModel.items.isNotEmpty
+          ? ListView.builder(
+              // itemCount: CatalogModel.items.length,
+              itemCount: CatalogModel.items.length,
+              itemBuilder: (context, index) {
+                return ItemWidget(
+                  item: //CatalogModel.items[index]
+                      CatalogModel.items[index],
+                );
+              },
+            )
+          : const Center(
+              child: CircularProgressIndicator(color: Colors.deepPurple),
+            ),
       drawer: const MyDrawer(),
     );
   }
