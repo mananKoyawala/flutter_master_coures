@@ -47,16 +47,14 @@ class _HomePageState extends State<HomePage> {
               fontFamily: 'OpenSans'),
         ),
       ),
-      body: CatalogModel.items != null && CatalogModel.items.isNotEmpty
+      body: CatalogModel.items.isNotEmpty
           ? ListView.builder(
               // itemCount: CatalogModel.items.length,
               itemCount: CatalogModel.items.length,
-              itemBuilder: (context, index) {
-                return ItemWidget(
-                  item: //CatalogModel.items[index]
-                      CatalogModel.items[index],
-                );
-              },
+              itemBuilder: (context, index) => ItemWidget(
+                item: //CatalogModel.items[index]
+                    CatalogModel.items[index],
+              ),
             )
           : const Center(
               child: CircularProgressIndicator(color: Colors.deepPurple),

@@ -15,7 +15,14 @@ class ItemWidget extends StatelessWidget {
         elevation: 2.5,
         child: ListTile(
           onTap: () {},
-          leading: Image.network(item.image),
+          leading: ConstrainedBox(
+              constraints: const BoxConstraints(
+                maxHeight: 40,
+                maxWidth: 40,
+                minHeight: 10,
+                minWidth: 10,
+              ),
+              child: Image.network(item.image)),
           title: Text(
             item.name,
             style: const TextStyle(fontWeight: FontWeight.bold),
