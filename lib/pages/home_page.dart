@@ -37,29 +37,75 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // final dummyList = List.generate(10, (index) => CatalogModel.items[0]);
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Catalog App",
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-              fontFamily: 'OpenSans'),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            "Catalog App",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontFamily: 'OpenSans'),
+          ),
         ),
-      ),
-      body: CatalogModel.items.isNotEmpty
-          ? ListView.builder(
-              // itemCount: CatalogModel.items.length,
-              itemCount: CatalogModel.items.length,
-              itemBuilder: (context, index) => ItemWidget(
-                item: //CatalogModel.items[index]
-                    CatalogModel.items[index],
+        body: CatalogModel.items.isNotEmpty
+            ? Container(
+                margin: const EdgeInsets.only(left: 5, right: 5),
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 5),
+                  itemBuilder: (context, index) {
+                    final item = CatalogModel.items[index];
+                    return Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      elevation: 5,
+                      child: GridTile(
+                          header: Container(
+                            clipBehavior: Clip.antiAlias,
+                            padding: const EdgeInsets.all(12),
+                            decoration: const BoxDecoration(
+                              color: Colors.deepPurple,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10)),
+                            ),
+                            child: Text(
+                              item.name,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ),
+                          child: Image.network(item.image),
+                          footer: Container(
+                            clipBehavior: Clip.antiAlias,
+                            padding: const EdgeInsets.all(12),
+                            decoration: const BoxDecoration(
+                              color: Colors.deepPurple,
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(10),
+                                  bottomRight: Radius.circular(10)),
+                            ),
+                            child: Text(
+                              item.price.toString(),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          )),
+                    );
+                  },
+                  itemCount: CatalogModel.items.length,
+                ),
+              )
+            : const Center(
+                child: CircularProgressIndicator(color: Colors.deepPurple),
               ),
-            )
-          : const Center(
-              child: CircularProgressIndicator(color: Colors.deepPurple),
-            ),
-      drawer: const MyDrawer(),
+        drawer: const MyDrawer(),
+      ),
     );
   }
 }
