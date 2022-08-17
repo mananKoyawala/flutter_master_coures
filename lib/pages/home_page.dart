@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'dart:convert'; //used for convert json data
 import 'package:flutter_master_course/models/catalog.dart';
 import 'package:flutter_master_course/widgets/drawer.dart';
-import 'package:flutter_master_course/widgets/itemwidget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -84,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                             clipBehavior: Clip.antiAlias,
                             padding: const EdgeInsets.all(12),
                             decoration: const BoxDecoration(
-                              color: Colors.deepPurple,
+                              color: Colors.black,
                               borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(10),
                                   bottomRight: Radius.circular(10)),
