@@ -78,11 +78,20 @@ class HomeDetailPage extends StatelessWidget {
                         ),
                         Text(
                           catalog.desc,
-                          style: const TextStyle(
-                              fontSize: 15,
-                              color: Color.fromARGB(192, 86, 85, 85)),
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: MyTheme.transprent,
+                          ),
                         ),
-                        const Text(""),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 32),
+                          child: Text(
+                            "Clita et dolore ipsum rebum lorem nonumy stet. Dolores dolor elitr vero dolor erat magna lorem et sed, et no diam diam accusam ipsum, eos no aliquyam amet.",
+                            style: TextStyle(
+                                fontSize: 10, color: MyTheme.transprent),
+                          ),
+                        ),
                       ],
                     ),
                   ),

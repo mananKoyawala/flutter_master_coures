@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_master_course/pages/cart.dart';
 import 'utils/themes.dart';
 import 'utils/routes.dart';
 import 'pages/login_page.dart';
@@ -16,6 +17,7 @@ void main() => runApp(
           "/": (context) => const LoginPage(),
           MyRoutes.homeRoute: (context) => const HomePage(),
           MyRoutes.loginRoute: (context) => const LoginPage(),
+          MyRoutes.cartRoute: (context) => const CartPage(),
         },
       ),
     );

@@ -18,4 +18,5 @@ class MyTheme {
       );
   static Color creamColor = const Color(0xfff5f5f5); //extra colors
   static Color darkBluish = const Color(0xff403b58);
+  static Color transprent = const Color.fromARGB(192, 86, 85, 85);
 }

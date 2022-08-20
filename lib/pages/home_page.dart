@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_master_course/utils/routes.dart';
 import 'dart:convert'; //used for convert json data
 import '../models/catalog.dart';
 import '../utils/themes.dart';
@@ -41,6 +43,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // final dummyList = List.generate(10, (index) => CatalogModel.items[0]);
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+        backgroundColor: MyTheme.darkBluish,
+        child: const Icon(CupertinoIcons.cart),
+      ),
       backgroundColor: MyTheme.creamColor,
       body: SafeArea(
         bottom: false,
