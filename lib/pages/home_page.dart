@@ -43,12 +43,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: MyTheme.creamColor,
       body: SafeArea(
+        bottom: false,
         child: Container(
           padding: const EdgeInsets.all(32),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const CatalogHeader(),
+              const SizedBox(
+                height: 10,
+              ),
               if (CatalogModel.items.isEmpty)
                 const Expanded(
                   child: Center(
