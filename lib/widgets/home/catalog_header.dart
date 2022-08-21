@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../utils/themes.dart';
 
 class CatalogHeader extends StatelessWidget {
   const CatalogHeader({Key? key}) : super(key: key);
@@ -14,12 +13,11 @@ class CatalogHeader extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: 30,
-            color: MyTheme.darkBluish,
+            color: Theme.of(context).accentColor,
           ),
         ),
         const Text(
           "Trending Products",
-          style: TextStyle(fontSize: 15),
         ),
       ],
     );

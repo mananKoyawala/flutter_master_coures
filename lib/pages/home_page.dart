@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_master_course/utils/routes.dart';
 import 'dart:convert'; //used for convert json data
 import '../models/catalog.dart';
-import '../utils/themes.dart';
 import '../widgets/home/catalog_header.dart';
 import '../widgets/home/catalog_list.dart';
 
@@ -45,10 +44,13 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-        backgroundColor: MyTheme.darkBluish,
-        child: const Icon(CupertinoIcons.cart),
+        backgroundColor: Theme.of(context).buttonColor,
+        child: const Icon(
+          CupertinoIcons.cart,
+          color: Colors.white,
+        ),
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: Theme.of(context).canvasColor,
       body: SafeArea(
         bottom: false,
         child: Container(

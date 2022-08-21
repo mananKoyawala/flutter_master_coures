@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_master_course/package/items/vx_color.dart';
 import 'package:flutter_master_course/pages/home_details_page.dart';
 import '../../models/catalog.dart';
 import '../../utils/themes.dart';
@@ -53,14 +54,14 @@ class CatalogItem extends StatelessWidget {
               textScaleFactor: 1.3,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: MyTheme.darkBluish,
+                color: Theme.of(context).accentColor,
                 fontSize: 12,
               ),
             ),
             Text(
               catalog.desc,
-              style: const TextStyle(
-                  fontSize: 10, color: Color.fromARGB(192, 86, 85, 85)),
+              style: TextStyle(
+                  fontSize: 10, color: Theme.of(context).primaryColor),
             ),
             const SizedBox(height: 10),
             Padding(
@@ -76,14 +77,14 @@ class CatalogItem extends StatelessWidget {
                     textScaleFactor: 1.3,
                   ),
                   SizedBox(
-                    height: 50,
-                    width: 80,
+                    height: 40,
+                    width: 60,
                     child: ElevatedButton(
                       onPressed: () {},
                       child: const Icon(CupertinoIcons.cart_badge_plus),
                       style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(MyTheme.darkBluish),
+                          backgroundColor: MaterialStateProperty.all(
+                              Theme.of(context).buttonColor),
                           shape:
                               MaterialStateProperty.all(const StadiumBorder())),
                     ),
@@ -94,9 +95,9 @@ class CatalogItem extends StatelessWidget {
           ],
         ))
       ]),
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(15)),
-          color: Colors.white),
+      decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(15)),
+          color: Theme.of(context).cardColor),
     );
   }
 }

@@ -31,6 +31,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Theme.of(context).canvasColor,
       child: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -108,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: changeButton
                     ? BorderRadius.circular(50)
                     : BorderRadius.circular(10),
-                color: Colors.deepPurple,
+                color: Theme.of(context).buttonColor,
                 child: InkWell(
                   // splashColor: const Color.fromARGB(0, 255, 255, 255),
                   borderRadius: BorderRadius.circular(10),

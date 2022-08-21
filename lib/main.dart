@@ -9,10 +9,10 @@ void main() => runApp(
       MaterialApp(
         title: "Flutter Course",
         debugShowCheckedModeBanner: false,
-        themeMode: ThemeMode.light, //for theme mode light, dark or system
+        themeMode: ThemeMode.dark, //for theme mode light, dark or system
         darkTheme: MyTheme.dartThemeData, //to Apply dark theme properties,
         theme: MyTheme.themedata, //to apply theme on light mode
-        initialRoute: MyRoutes.homeRoute,
+        initialRoute: MyRoutes.loginRoute,
         routes: {
           "/": (context) => const LoginPage(),
           MyRoutes.homeRoute: (context) => const HomePage(),
