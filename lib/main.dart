@@ -12,7 +12,7 @@ void main() => runApp(
         themeMode: ThemeMode.dark, //for theme mode light, dark or system
         darkTheme: MyTheme.dartThemeData, //to Apply dark theme properties,
         theme: MyTheme.themedata, //to apply theme on light mode
-        initialRoute: MyRoutes.loginRoute,
+        initialRoute: MyRoutes.homeRoute,
         routes: {
           "/": (context) => const LoginPage(),
           MyRoutes.homeRoute: (context) => const HomePage(),
