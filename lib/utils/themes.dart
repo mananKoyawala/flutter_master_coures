@@ -1,11 +1,13 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_master_course/package/myvx.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MyTheme {
   static ThemeData themedata(BuildContext context) => ThemeData(
         primarySwatch: Colors.deepPurple,
-        fontFamily: GoogleFonts.poppins().fontFamily,
+        // fontFamily: GoogleFonts.poppins().fontFamily,
+        fontFamily: 'poppins',
         cardColor: Colors.white,
         canvasColor: creamColor,
         buttonColor: darkBluish,
@@ -22,7 +24,8 @@ class MyTheme {
       );
   static ThemeData darkThemeData(BuildContext context) => ThemeData(
         brightness: Brightness.dark,
-        fontFamily: GoogleFonts.poppins().fontFamily,
+        // fontFamily: GoogleFonts.poppins().fontFamily,
+        fontFamily: 'poppins',
         cardColor: Colors.black,
         canvasColor: darkcreamColor,
         buttonColor: lightBluish,
