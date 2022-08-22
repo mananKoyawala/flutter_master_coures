@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_master_course/package/myvx.dart';
-import '../../utils/themes.dart';
 import '../models/catalog.dart';
 
 class HomeDetailPage extends StatelessWidget {
@@ -62,7 +61,7 @@ class HomeDetailPage extends StatelessWidget {
                 width: double.infinity,
                 color: Theme.of(context).cardColor,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 64.0),
+                  padding: const EdgeInsets.symmetric(vertical: 45.0),
                   child: Column(
                     children: [
                       Text(

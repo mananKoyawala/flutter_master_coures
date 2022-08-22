@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_master_course/package/items/vx_color.dart';
 import 'package:flutter_master_course/pages/home_details_page.dart';
 import '../../models/catalog.dart';
-import '../../utils/themes.dart';
 import '../../widgets/home/catalog_image.dart';
 
 class CatalogList extends StatelessWidget {

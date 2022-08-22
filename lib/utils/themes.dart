@@ -3,7 +3,7 @@ import 'package:flutter_master_course/package/myvx.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyTheme {
-  static ThemeData get themedata => ThemeData(
+  static ThemeData themedata(BuildContext context) => ThemeData(
         primarySwatch: Colors.deepPurple,
         fontFamily: GoogleFonts.poppins().fontFamily,
         cardColor: Colors.white,
@@ -11,6 +11,7 @@ class MyTheme {
         buttonColor: darkBluish,
         accentColor: darkBluish,
         primaryColor: darkBluish,
+        primaryColorLight: Colors.black,
         progressIndicatorTheme:
             const ProgressIndicatorThemeData(color: Colors.deepPurple),
         appBarTheme: const AppBarTheme(
@@ -19,7 +20,7 @@ class MyTheme {
           iconTheme: IconThemeData(color: Colors.black),
         ),
       );
-  static ThemeData get dartThemeData => ThemeData(
+  static ThemeData darkThemeData(BuildContext context) => ThemeData(
         brightness: Brightness.dark,
         fontFamily: GoogleFonts.poppins().fontFamily,
         cardColor: Colors.black,
@@ -27,6 +28,7 @@ class MyTheme {
         buttonColor: lightBluish,
         accentColor: Colors.white,
         primaryColor: whiteShaddey,
+        primaryColorLight: Colors.white,
         progressIndicatorTheme:
             const ProgressIndicatorThemeData(color: Colors.white),
         appBarTheme: const AppBarTheme(
