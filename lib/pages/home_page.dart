@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_master_course/utils/routes.dart';
+import 'package:flutter_master_course/utils/themes.dart';
 import 'dart:convert'; //used for convert json data
 import '../models/catalog.dart';
 import '../widgets/home/catalog_header.dart';
@@ -63,10 +64,10 @@ class _HomePageState extends State<HomePage> {
                 height: 10,
               ),
               if (CatalogModel.items.isEmpty)
-                const Expanded(
+                Expanded(
                   child: Center(
                     child: CircularProgressIndicator(
-                      color: Colors.deepPurple,
+                      color: Theme.of(context).accentColor,
                     ),
                   ),
                 )
