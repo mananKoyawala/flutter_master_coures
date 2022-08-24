@@ -40,7 +40,7 @@ class _CartTotal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 7.5,
+      height: MediaQuery.of(context).size.height / 4,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
         Text("\$9999",
             style: TextStyle(
@@ -54,7 +54,10 @@ class _CartTotal extends StatelessWidget {
           height: 50,
           width: 100,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Buying not supported yet...")));
+            },
             child: const Text(
               "Buy",
               style: TextStyle(color: Colors.white),
