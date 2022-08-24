@@ -4,13 +4,13 @@ class CatalogModel {
   //this array -> list it's only for static then after we load from json file
 
   //get Item by their id when we make cart
-  static Item getByID(int id) => items.firstWhere(
+  Item getByID(int id) => items.firstWhere(
         (element) => element.id == id,
         // orElse:null
       ); //this function get item that we provide id and then check first matches from list
 
   //get Item by their position in list to make cart
-  static Item getByPosition(int pos) => items[pos];
+  Item getByPosition(int pos) => items[pos];
 }
 
 class Item {

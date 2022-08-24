@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_master_course/pages/cart.dart';
+import 'package:flutter_master_course/pages/cart_page.dart';
 import 'utils/themes.dart';
 import 'utils/routes.dart';
 import 'pages/login_page.dart';
