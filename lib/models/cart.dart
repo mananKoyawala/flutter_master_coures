@@ -19,7 +19,7 @@ class CartModel {
   List<Item> get item => _itemIds.map((id) => _catalog.getByID(id)).toList();
 
   // Get Total Price
-  num get tottalPrice =>
+  num get totalPrice =>
       item.fold(0, (total, currentValue) => total + currentValue.price);
 //-> initail price is 0 then if 1 product price is 1000 than 0 + 1000 is 1000 and 1000 + 900 = 1900 and so on.
 

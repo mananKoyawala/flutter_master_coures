@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_master_course/models/cart.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -39,10 +40,11 @@ class _CartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = CartModel();
     return SizedBox(
       height: MediaQuery.of(context).size.height / 4,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-        Text("\$9999",
+        Text("\$${_cart.totalPrice}",
             style: TextStyle(
                 color: Theme.of(context).accentColor,
                 fontSize: 25,
@@ -83,16 +85,26 @@ class CartList extends StatefulWidget {
 class _CartListState extends State<CartList> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: const Icon(Icons.done),
-          title: const Text("Items"),
-          trailing: IconButton(
-              onPressed: () {}, icon: const Icon(Icons.remove_circle_outline)),
-        );
-      },
-    );
+    final _cart = CartModel();
+    return _cart.item.isEmpty
+        ? Center(
+            child: Text(
+              "There are no items in Cart !",
+              style: TextStyle(
+                  color: Theme.of(context).primaryColorLight, fontSize: 15),
+            ),
+          )
+        : ListView.builder(
+            itemCount: _cart.item.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                leading: const Icon(Icons.done),
+                title: Text(_cart.item[index].name),
+                trailing: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.remove_circle_outline)),
+              );
+            },
+          );
   }
 }

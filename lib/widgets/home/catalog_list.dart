@@ -76,18 +76,10 @@ class CatalogItem extends StatelessWidget {
                     style: const TextStyle(fontWeight: FontWeight.bold),
                     textScaleFactor: 1.3,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                     width: 60,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Icon(CupertinoIcons.cart_badge_plus),
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).buttonColor),
-                          shape:
-                              MaterialStateProperty.all(const StadiumBorder())),
-                    ),
+                    child: _AddToCart(),
                   )
                 ],
               ),
@@ -98,6 +90,34 @@ class CatalogItem extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(15)),
           color: Theme.of(context).cardColor),
+    );
+  }
+}
+
+class _AddToCart extends StatefulWidget {
+  const _AddToCart({Key? key}) : super(key: key);
+
+  @override
+  State<_AddToCart> createState() => __AddToCartState();
+}
+
+class __AddToCartState extends State<_AddToCart> {
+  bool isAdded = false;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        setState(() {
+          isAdded = isAdded == false ? true : false;
+        });
+      },
+      child: isAdded == true
+          ? const Icon(Icons.done)
+          : const Icon(CupertinoIcons.cart_badge_plus),
+      style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all(Theme.of(context).buttonColor),
+          shape: MaterialStateProperty.all(const StadiumBorder())),
     );
   }
 }
