@@ -3,4 +3,5 @@ class MyRoutes {
   static String loginRoute = "/login";
   static String homeDetailRoute = "/detail";
   static String cartRoute = "/cart";
+  static String splashRoute = "/splash";
 }
