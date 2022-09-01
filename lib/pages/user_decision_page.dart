@@ -35,7 +35,7 @@ class UserDecisionPage extends StatelessWidget {
                 "Customer".toUpperCase(),
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 15,
                     fontFamily: 'QuickSand',
                     fontWeight: FontWeight.bold),
               )),
@@ -58,7 +58,7 @@ class UserDecisionPage extends StatelessWidget {
                 "Merchant".toUpperCase(),
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 15,
                     fontFamily: 'QuickSand',
                     fontWeight: FontWeight.bold),
               )),
