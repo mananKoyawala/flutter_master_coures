@@ -51,7 +51,21 @@ class HomeDetailPage extends StatelessWidget {
               tag: Key(catalog.id.toString()),
               child: SizedBox(
                   height: MediaQuery.of(context).size.height / 3,
-                  child: Image.network(catalog.image))),
+                  child: Image.network(
+                    catalog.image,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: Theme.of(context).accentColor,
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    },
+                  ))),
           Expanded(
             child: VxArc(
               height: 30,

@@ -11,9 +11,22 @@ class CatalogImage extends StatelessWidget {
         width: MediaQuery.of(context).size.width / 4,
         color: Theme.of(context).canvasColor,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.network(image),
-        ),
+            padding: const EdgeInsets.all(8.0),
+            child: Image.network(
+              image,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) return child;
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).accentColor,
+                    value: loadingProgress.expectedTotalBytes != null
+                        ? loadingProgress.cumulativeBytesLoaded /
+                            loadingProgress.expectedTotalBytes!
+                        : null,
+                  ),
+                );
+              },
+            )),
       ),
     );
   }

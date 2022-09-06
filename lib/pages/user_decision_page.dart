@@ -19,21 +19,23 @@ class UserDecisionPage extends StatelessWidget {
           Text(
             "Welcome",
             style: TextStyle(
-                color: Colors.black, fontSize: 40, fontFamily: 'OpenSans'),
+                color: Theme.of(context).accentColor,
+                fontSize: 40,
+                fontFamily: 'OpenSans'),
           ),
           const SizedBox(
             height: 40,
           ),
           InkWell(
-            onTap: () => Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => HomePage())),
+            onTap: () => Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const HomePage())),
             child: Container(
               height: MediaQuery.of(context).size.height / 8.5,
               width: MediaQuery.of(context).size.width / 2,
               child: Center(
                   child: Text(
                 "Customer".toUpperCase(),
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
                     fontFamily: 'QuickSand',
@@ -48,15 +50,15 @@ class UserDecisionPage extends StatelessWidget {
             height: 30,
           ),
           InkWell(
-            onTap: () => Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => LoginPage())),
+            onTap: () => Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const LoginPage())),
             child: Container(
               height: MediaQuery.of(context).size.height / 8.5,
               width: MediaQuery.of(context).size.width / 2,
               child: Center(
                   child: Text(
                 "Merchant".toUpperCase(),
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
                     fontFamily: 'QuickSand',

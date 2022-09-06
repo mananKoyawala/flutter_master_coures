@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Flutter Course",
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system, //for theme mode light, dark or system
+      themeMode: ThemeMode.dark, //for theme mode light, dark or system
       darkTheme:
           MyTheme.darkThemeData(context), //to Apply dark theme properties,
       theme: MyTheme.themedata(context), //to apply theme on light mode
@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
         MyRoutes.loginRoute: (context) => const LoginPage(),
         MyRoutes.cartRoute: (context) => const CartPage(),
       },
-      home: UserDecisionPage(),
+      home: const UserDecisionPage(),
     );
   }
 }
-// Users\manan\AppData\Local\Android\Sdk\platform-tools
+// cd Users\manan\AppData\Local\Android\Sdk\platform-tools

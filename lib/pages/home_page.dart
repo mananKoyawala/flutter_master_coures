@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_master_course/utils/routes.dart';
-import 'package:flutter_master_course/utils/themes.dart';
 import 'dart:convert'; //used for convert json data
 import '../models/catalog.dart';
 import '../widgets/home/catalog_header.dart';
