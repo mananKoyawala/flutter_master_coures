@@ -1,4 +1,9 @@
 class CatalogModel {
+  // Purpose :- only one time create object and return singletn object and retrive when we create after once.
+  static final catModel = CatalogModel._internal();
+  CatalogModel._internal(); // it is constuctor of cartModel
+  factory CatalogModel() => catModel;
+
   //we add this product list to catalog class as static so we can easily direct access this products by CatalogModel.items[index]
   static List<Item> items = [];
   //this array -> list it's only for static then after we load from json file
