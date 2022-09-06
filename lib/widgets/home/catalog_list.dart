@@ -4,6 +4,7 @@ import 'package:flutter_master_course/models/cart.dart';
 import 'package:flutter_master_course/pages/home_details_page.dart';
 import '../../models/catalog.dart';
 import '../../widgets/home/catalog_image.dart';
+import 'add_to_cart.dart';
 
 class CatalogList extends StatelessWidget {
   const CatalogList({Key? key}) : super(key: key);
@@ -80,7 +81,7 @@ class CatalogItem extends StatelessWidget {
                   SizedBox(
                     height: 40,
                     width: 60,
-                    child: _AddToCart(catalog: catalog),
+                    child: AddToCart(catalog: catalog),
                   )
                 ],
               ),
@@ -91,43 +92,6 @@ class CatalogItem extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(15)),
           color: Theme.of(context).cardColor),
-    );
-  }
-}
-
-class _AddToCart extends StatefulWidget {
-  final Item catalog;
-  const _AddToCart({Key? key, required this.catalog}) : super(key: key);
-
-  @override
-  State<_AddToCart> createState() => __AddToCartState();
-}
-
-class __AddToCartState extends State<_AddToCart> {
-  bool isAdded = false;
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        // Here we actualy add items in cart model
-        final _cart =
-            CartModel(); // Now the problem is every time new object is created where CartModel or CatalogModel for overcome this problem we have to create one object that we create new object it returns created old object. for this we changes in cart and catalog model class.
-        final _catalog = CatalogModel();
-
-        setState(() {
-          isAdded = isAdded == false ? true : false;
-          _cart.catalog =
-              _catalog; //here we set catalog to get ids of items where first matches from catalogmodel and add in to itemIds that will be used in future.
-          _cart.add(widget.catalog); //add to cart
-        });
-      },
-      child: isAdded == true
-          ? const Icon(Icons.done)
-          : const Icon(CupertinoIcons.cart_badge_plus),
-      style: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.all(Theme.of(context).buttonColor),
-          shape: MaterialStateProperty.all(const StadiumBorder())),
     );
   }
 }

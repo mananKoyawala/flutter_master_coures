@@ -101,7 +101,11 @@ class _CartListState extends State<CartList> {
                 leading: const Icon(Icons.done),
                 title: Text(_cart.item[index].name),
                 trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        _cart.remove(_cart.item[index]);
+                      });
+                    },
                     icon: const Icon(Icons.remove_circle_outline)),
               );
             },
