@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_master_course/core/store.dart';
+import 'package:flutter_master_course/models/cart.dart';
 import 'package:flutter_master_course/utils/routes.dart';
+import 'package:velocity_x/velocity_x.dart';
 import 'dart:convert'; //used for convert json data
 import '../models/catalog.dart';
 import '../widgets/home/catalog_header.dart';
@@ -41,13 +44,23 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // final dummyList = List.generate(10, (index) => CatalogModel.items[0]);
+    final _cart = (VxState.store as MyStore).cart;
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-        backgroundColor: Theme.of(context).buttonColor,
-        child: const Icon(
-          CupertinoIcons.cart,
-          color: Colors.white,
+      floatingActionButton: VxBuilder(
+        mutations: const {AddMutation, RemoveMutation},
+        builder: (context, _status, _) => VxBadge(
+          color: Vx.red500,
+          count: _cart.item.length,
+          size: 22,
+          textStyle: const TextStyle(fontSize: 10, color: Colors.white),
+          child: FloatingActionButton(
+            onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+            backgroundColor: Theme.of(context).buttonColor,
+            child: const Icon(
+              CupertinoIcons.cart,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
       backgroundColor: Theme.of(context).canvasColor,
