@@ -26,14 +26,6 @@ class CartModel {
 //-> initail price is 0 then if 1 product price is 1000 than 0 + 1000 is 1000 and 1000 + 900 = 1900 and so on.
 
   // add item in cart
-  void add(Item item) {
-    _itemIds.add(item.id);
-  }
-
-  // remove item from cart
-  void remove(Item item) {
-    _itemIds.remove(item.id);
-  }
 }
 
 class AddMutation extends VxMutation<MyStore> {
@@ -43,5 +35,15 @@ class AddMutation extends VxMutation<MyStore> {
   @override
   perform() {
     store?.cart._itemIds.add(item.id);
+  }
+}
+
+class RemoveMutation extends VxMutation<MyStore> {
+  final Item item;
+
+  RemoveMutation(this.item);
+  @override
+  perform() {
+    store?.cart._itemIds.remove(item.id);
   }
 }

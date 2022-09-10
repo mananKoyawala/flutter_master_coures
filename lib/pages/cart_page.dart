@@ -21,18 +21,18 @@ class CartPage extends StatelessWidget {
           style: TextStyle(color: Theme.of(context).primaryColorLight),
         ),
       ),
-      body: Column(children: [
+      body: Column(children: const [
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(32.0),
+            padding: EdgeInsets.all(32.0),
             child: CartList(),
           ),
         ),
-        const Padding(
+        Padding(
           padding: EdgeInsets.symmetric(horizontal: 32.0),
           child: Divider(thickness: 2),
         ),
-        const _CartTotal(),
+        _CartTotal(),
       ]),
     );
   }
@@ -43,45 +43,61 @@ class _CartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartModel _cart = (VxState.store as MyStore).cart;
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return SizedBox(
       height: MediaQuery.of(context).size.height / 4,
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-        Text("\$${_cart.totalPrice}",
-            style: TextStyle(
-                color: Theme.of(context).accentColor,
-                fontSize: 25,
-                fontWeight: FontWeight.w600)),
-        const SizedBox(
-          width: 30,
-        ),
-        SizedBox(
-          height: 50,
-          width: 100,
-          child: ElevatedButton(
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Buying not supported yet...")));
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          //we can use VxBuilder insted of VxConsumer
+          VxConsumer(
+            notifications: const {},
+            builder: (
+              context,
+              _status,
+              _,
+            ) {
+              return "\$${_cart.totalPrice}".text.xl5.make();
             },
-            child: const Text(
-              "Buy",
-              style: TextStyle(color: Colors.white),
-            ),
-            style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(Theme.of(context).buttonColor),
-                shape: MaterialStateProperty.all(const StadiumBorder())),
+            mutations: const {RemoveMutation},
           ),
-        )
-      ]),
+          const SizedBox(
+            width: 30,
+          ),
+          SizedBox(
+            height: 50,
+            width: 100,
+            child: ElevatedButton(
+              onPressed: () {
+                _cart.item.isEmpty
+                    ? ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Please add atleast one item in Cart!")))
+                    : ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Buying item Module in progress...")));
+              },
+              child: const Text(
+                "Buy",
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Theme.of(context).buttonColor),
+                  shape: MaterialStateProperty.all(const StadiumBorder())),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
 
 class CartList extends StatelessWidget {
+  const CartList({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    CartModel _cart = (VxState.store as MyStore).cart;
+    VxState.watch(context, on: [RemoveMutation]);
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return _cart.item.isEmpty
         ? Center(
             child: Text(
@@ -97,11 +113,7 @@ class CartList extends StatelessWidget {
                 leading: const Icon(Icons.done),
                 title: Text(_cart.item[index].name),
                 trailing: IconButton(
-                    onPressed: () {
-                      _cart.remove(_cart.item[index]);
-
-                      // setState(() {});
-                    },
+                    onPressed: () => RemoveMutation(_cart.item[index]),
                     icon: const Icon(Icons.remove_circle_outline)),
               );
             },
