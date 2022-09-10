@@ -1,11 +1,6 @@
 import 'package:flutter_master_course/models/catalog.dart';
 
 class CartModel {
-  // Purpose :- only one time create object and return singletn object and retrive when we create after once.
-  static final cartModel = CartModel._internal();
-  CartModel._internal(); // it is constuctor of cartModel
-  factory CartModel() => cartModel;
-
   //catalog feilds
   late CatalogModel _catalog;
 

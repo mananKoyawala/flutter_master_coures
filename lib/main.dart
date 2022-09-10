@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_master_course/core/store.dart';
 import 'package:flutter_master_course/pages/cart_page.dart';
 import 'package:flutter_master_course/pages/user_decision_page.dart';
 import 'utils/themes.dart';
 import 'utils/routes.dart';
 import 'pages/login_page.dart';
 import 'pages/home_page.dart';
+import 'package:velocity_x/velocity_x.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(VxState(store: MyStore(), child: const MyApp()));
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

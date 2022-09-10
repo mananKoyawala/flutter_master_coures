@@ -4,20 +4,15 @@ import 'package:flutter/material.dart';
 import '../../models/cart.dart';
 import '../../models/catalog.dart';
 
-class AddToCart extends StatefulWidget {
+class AddToCart extends StatelessWidget {
   final Item catalog;
-  const AddToCart({Key? key, required this.catalog}) : super(key: key);
+  AddToCart({Key? key, required this.catalog}) : super(key: key);
 
-  @override
-  State<AddToCart> createState() => _AddToCartState();
-}
-
-class _AddToCartState extends State<AddToCart> {
   final _cart =
       CartModel(); // Now the problem is every time new object is created where CartModel or CatalogModel for overcome this problem we have to create one object that we create new object it returns created old object. for this we changes in cart and catalog model class.
   @override
   Widget build(BuildContext context) {
-    bool isInCart = _cart.item.contains(widget.catalog)
+    bool isInCart = _cart.item.contains(catalog)
         ? true
         : false; // this statment indicates the if item in cart then done otherwise add symbol to add in cart.
 
@@ -27,13 +22,11 @@ class _AddToCartState extends State<AddToCart> {
 
         if (!isInCart) {
           final _catalog = CatalogModel();
-
-          setState(() {
-            isInCart = isInCart == false ? true : false;
-            _cart.catalog =
-                _catalog; //here we set catalog to get ids of items where first matches from catalogmodel and add in to itemIds that will be used in future.
-            _cart.add(widget.catalog); //add to cart
-          });
+          isInCart = isInCart == false ? true : false;
+          _cart.catalog =
+              _catalog; //here we set catalog to get ids of items where first matches from catalogmodel and add in to itemIds that will be used in future.
+          _cart.add(catalog); //add to cart
+          // setState(() {});
         }
       },
       child: isInCart == true
