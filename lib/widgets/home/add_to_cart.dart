@@ -1,17 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_master_course/core/store.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import '../../models/cart.dart';
 import '../../models/catalog.dart';
 
 class AddToCart extends StatelessWidget {
   final Item catalog;
-  AddToCart({Key? key, required this.catalog}) : super(key: key);
+  const AddToCart({Key? key, required this.catalog}) : super(key: key);
 
-  final _cart =
-      CartModel(); // Now the problem is every time new object is created where CartModel or CatalogModel for overcome this problem we have to create one object that we create new object it returns created old object. for this we changes in cart and catalog model class.
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [AddMutation]);
+    CartModel _cart = (VxState.store as MyStore).cart;
     bool isInCart = _cart.item.contains(catalog)
         ? true
         : false; // this statment indicates the if item in cart then done otherwise add symbol to add in cart.
@@ -21,12 +23,7 @@ class AddToCart extends StatelessWidget {
         // Here we actualy add items in cart model
 
         if (!isInCart) {
-          final _catalog = CatalogModel();
-          isInCart = isInCart == false ? true : false;
-          _cart.catalog =
-              _catalog; //here we set catalog to get ids of items where first matches from catalogmodel and add in to itemIds that will be used in future.
-          _cart.add(catalog); //add to cart
-          // setState(() {});
+          AddMutation(catalog);
         }
       },
       child: isInCart == true
