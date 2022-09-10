@@ -9,6 +9,7 @@ class CatalogHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               "Catalog App",
@@ -18,6 +19,7 @@ class CatalogHeader extends StatelessWidget {
                 color: Theme.of(context).accentColor,
               ),
             ),
+            Switch(value: true, onChanged: (onChanged) {})
           ],
         ),
         const Text(
