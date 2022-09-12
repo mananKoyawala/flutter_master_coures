@@ -9,6 +9,7 @@ import 'dart:convert'; //used for convert json data
 import '../models/catalog.dart';
 import '../widgets/home/catalog_header.dart';
 import '../widgets/home/catalog_list.dart';
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,6 +19,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final url =
+      Uri.parse("https://mocki.io/v1/f63f6c47-01a0-43f7-b623-4a389b79d96c");
+
   @override //this method loads all data not reload the build method when data is avilable then the data will be shown.
   void initState() {
     super.initState();
@@ -26,8 +30,11 @@ class _HomePageState extends State<HomePage> {
 
   loadData() async {
     await Future.delayed(const Duration(seconds: 3));
-    final catalogJSON = await rootBundle.loadString(
-        "assets/files/product.json"); //get File From assets/file directory
+    final res = await http.get(url);
+    final catalogJSON = res.body;
+    // final catalogJSON = await rootBundle.loadString(
+    //     "assets/files/product.json");
+    //get File From assets/file directory
     //rootBundle is used for background services that runs in background
     final decodedData = jsonDecode(
         catalogJSON); //decode json Data, this data is avilable in Map
