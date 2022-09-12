@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_master_course/core/store.dart';
 import 'package:flutter_master_course/models/cart.dart';
@@ -32,10 +31,6 @@ class _HomePageState extends State<HomePage> {
     await Future.delayed(const Duration(seconds: 3));
     final res = await http.get(url);
     final catalogJSON = res.body;
-    // final catalogJSON = await rootBundle.loadString(
-    //     "assets/files/product.json");
-    //get File From assets/file directory
-    //rootBundle is used for background services that runs in background
     final decodedData = jsonDecode(
         catalogJSON); //decode json Data, this data is avilable in Map
     var productsData = decodedData[
