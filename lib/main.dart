@@ -7,6 +7,7 @@ import 'utils/routes.dart';
 import 'pages/login_page.dart';
 import 'pages/home_page.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:get/get.dart';
 
 void main() => runApp(VxState(store: MyStore(), child: const MyApp()));
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: "Flutter Course",
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system, //for theme mode light, dark or system

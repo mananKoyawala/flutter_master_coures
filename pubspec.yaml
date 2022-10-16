@@ -37,6 +37,7 @@ dependencies:
   velocity_x: ^3.5.1
   google_fonts: ^3.0.1
   flutter_lints: ^1.0.0
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:
