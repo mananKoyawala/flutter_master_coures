@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_master_course/core/store.dart';
 import 'package:flutter_master_course/models/cart.dart';
+import 'package:flutter_master_course/pages/Internetlost_page.dart';
+import 'package:flutter_master_course/utils/Bloc/InternetBloc/InternetBloc.dart';
+import 'package:flutter_master_course/utils/Bloc/InternetBloc/InternetState.dart';
 import 'package:flutter_master_course/utils/routes.dart';
+import 'package:flutter_master_course/widgets/circularprogress.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'dart:convert'; //used for convert json data
 import '../models/catalog.dart';
 import '../widgets/home/catalog_header.dart';
 import '../widgets/home/catalog_list.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -78,15 +83,47 @@ class _HomePageState extends State<HomePage> {
                 height: 10,
               ),
               if (CatalogModel.items.isEmpty)
-                Expanded(
+                const Expanded(
                   child: Center(
-                    child: CircularProgressIndicator(
-                      color: Theme.of(context).accentColor,
-                    ),
+                    child: CircularProgress(),
                   ),
                 )
               else
-                const Expanded(child: CatalogList()),
+                Expanded(
+                    child: BlocConsumer<InternetBloc, InternetState>(
+                  listener: (context, state) {
+                    if (state is InternetGainedState) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          backgroundColor: Colors.green,
+                          content: Text(
+                            "Back Online",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400),
+                          )));
+                    } else if (state is InternetLostState) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          backgroundColor: Colors.red,
+                          content: Text(
+                            "No Internet",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400),
+                          )));
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is InternetGainedState) {
+                      return const CatalogList();
+                    } else if (state is InternetLostState) {
+                      return const InternetLostPage();
+                    } else {
+                      return const InternetLostPage();
+                    }
+                  },
+                )),
             ],
           ),
         ),

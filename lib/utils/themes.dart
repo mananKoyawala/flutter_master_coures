@@ -1,7 +1,9 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:flutter_master_course/package/myvx.dart';
+import 'package:get/get.dart';
+import 'package:velocity_x/velocity_x.dart';
+import 'package:get_storage/get_storage.dart';
 
 class MyTheme {
   static ThemeData themedata(BuildContext context) => ThemeData(
@@ -46,4 +48,16 @@ class MyTheme {
   static Color lightBluish = Vx.indigo700;
   static Color transprent = const Color.fromARGB(192, 86, 85, 85);
   static Color whiteShaddey = Colors.white70;
+}
+
+class ThemeServices {
+  final _box = GetStorage();
+  final _key = 'isLightMode';
+  _saveThemeToBox(bool isLightMode) => _box.write(_key, isLightMode);
+  bool _loadThemeFromBox() => _box.read(_key) ?? false;
+  ThemeMode get theme => _loadThemeFromBox() ? ThemeMode.dark : ThemeMode.light;
+  void switchTheme() {
+    Get.changeThemeMode(_loadThemeFromBox() ? ThemeMode.light : ThemeMode.dark);
+    _saveThemeToBox(!_loadThemeFromBox());
+  }
 }
