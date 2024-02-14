@@ -8,7 +8,9 @@ import '../../models/catalog.dart';
 
 class AddToCart extends StatelessWidget {
   final Item catalog;
-  const AddToCart({Key? key, required this.catalog}) : super(key: key);
+  final bool isHome;
+  const AddToCart({Key? key, required this.catalog, required this.isHome})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,21 +20,26 @@ class AddToCart extends StatelessWidget {
         ? true
         : false; // this statment indicates the if item in cart then done otherwise add symbol to add in cart.
 
-    return ElevatedButton(
-      onPressed: () {
-        // Here we actualy add items in cart model
-
+    return InkWell(
+      onTap: () {
         if (!isInCart) {
           AddMutation(catalog);
+        } else {
+          RemoveMutation(catalog);
         }
       },
-      child: isInCart == true
-          ? const Icon(Icons.done)
-          : const Icon(CupertinoIcons.cart_badge_plus),
-      style: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.all(Theme.of(context).buttonColor),
-          shape: MaterialStateProperty.all(const StadiumBorder())),
+      child: Container(
+          height: isHome ? 25 : 40,
+          width: isHome ? 50 : 80,
+          decoration: BoxDecoration(
+              color: Theme.of(context).hintColor,
+              borderRadius: BorderRadius.circular(50)),
+          child: Center(
+            child: isInCart == true
+                ? const Icon(Icons.done, color: Colors.white)
+                : const Icon(CupertinoIcons.cart_badge_plus,
+                    color: Colors.white),
+          )),
     );
   }
 }

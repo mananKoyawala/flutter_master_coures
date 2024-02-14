@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_master_course/models/cart.dart';
 import 'package:flutter_master_course/pages/home_details_page.dart';
 import '../../models/catalog.dart';
 import '../../widgets/home/catalog_image.dart';
@@ -56,7 +55,7 @@ class CatalogItem extends StatelessWidget {
               textScaleFactor: 1.3,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).highlightColor,
                 fontSize: 12,
               ),
             ),
@@ -81,7 +80,10 @@ class CatalogItem extends StatelessWidget {
                   SizedBox(
                     height: 40,
                     width: 60,
-                    child: AddToCart(catalog: catalog),
+                    child: AddToCart(
+                      catalog: catalog,
+                      isHome: true,
+                    ),
                   )
                 ],
               ),

@@ -19,7 +19,7 @@ class UserDecisionPage extends StatelessWidget {
           Text(
             "Welcome",
             style: TextStyle(
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).highlightColor,
                 fontSize: 40,
                 fontFamily: 'OpenSans'),
           ),

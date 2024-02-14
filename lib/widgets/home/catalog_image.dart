@@ -18,7 +18,7 @@ class CatalogImage extends StatelessWidget {
                 if (loadingProgress == null) return child;
                 return Center(
                   child: CircularProgressIndicator(
-                    color: Theme.of(context).accentColor,
+                    color: Theme.of(context).highlightColor,
                     value: loadingProgress.expectedTotalBytes != null
                         ? loadingProgress.cumulativeBytesLoaded /
                             loadingProgress.expectedTotalBytes!

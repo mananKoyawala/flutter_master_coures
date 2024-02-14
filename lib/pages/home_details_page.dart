@@ -33,7 +33,10 @@ class HomeDetailPage extends StatelessWidget {
               SizedBox(
                 height: 50,
                 width: 100,
-                child: AddToCart(catalog: catalog),
+                child: AddToCart(
+                  catalog: catalog,
+                  isHome: false,
+                ),
               ),
             ],
           ),
@@ -51,7 +54,7 @@ class HomeDetailPage extends StatelessWidget {
                       if (loadingProgress == null) return child;
                       return Center(
                         child: CircularProgressIndicator(
-                          color: Theme.of(context).accentColor,
+                          color: Theme.of(context).highlightColor,
                           value: loadingProgress.expectedTotalBytes != null
                               ? loadingProgress.cumulativeBytesLoaded /
                                   loadingProgress.expectedTotalBytes!
@@ -77,7 +80,7 @@ class HomeDetailPage extends StatelessWidget {
                         textScaleFactor: 1.3,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Theme.of(context).accentColor,
+                          color: Theme.of(context).highlightColor,
                           fontSize: 20,
                         ),
                       ),

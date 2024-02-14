@@ -81,7 +81,7 @@ class _CartTotal extends StatelessWidget {
               ),
               style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all(Theme.of(context).buttonColor),
+                      MaterialStateProperty.all(Theme.of(context).hintColor),
                   shape: MaterialStateProperty.all(const StadiumBorder())),
             ),
           ),

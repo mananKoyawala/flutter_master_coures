@@ -7,41 +7,45 @@ import 'package:get_storage/get_storage.dart';
 
 class MyTheme {
   static ThemeData themedata(BuildContext context) => ThemeData(
-        primarySwatch: Colors.deepPurple,
-        // fontFamily: GoogleFonts.poppins().fontFamily,
-        fontFamily: 'poppins',
-        cardColor: Colors.white,
-        canvasColor: creamColor,
-        buttonColor: darkBluish,
-        accentColor: darkBluish,
-        primaryColor: darkBluish,
-        primaryColorLight: Colors.black,
-        progressIndicatorTheme:
-            const ProgressIndicatorThemeData(color: Colors.deepPurple),
-        appBarTheme: const AppBarTheme(
-          elevation: 0.0,
-          backgroundColor: Colors.white,
-          iconTheme: IconThemeData(color: Colors.black),
-        ),
-      );
+      primarySwatch: Colors.deepPurple,
+      // fontFamily: GoogleFonts.poppins().fontFamily,
+      fontFamily: 'poppins',
+      cardColor: Colors.white,
+      canvasColor: creamColor,
+      // buttonColor: darkBluish,
+      // accentColor: darkBluish,
+      hintColor: darkBluish, //button
+      highlightColor: darkBluish, //accent
+      primaryColor: darkBluish,
+      primaryColorLight: Colors.black,
+      progressIndicatorTheme:
+          const ProgressIndicatorThemeData(color: Colors.deepPurple),
+      appBarTheme: const AppBarTheme(
+        elevation: 0.0,
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Colors.black),
+      ),
+      iconTheme: IconThemeData(color: darkBluish));
   static ThemeData darkThemeData(BuildContext context) => ThemeData(
-        brightness: Brightness.dark,
-        // fontFamily: GoogleFonts.poppins().fontFamily,
-        fontFamily: 'poppins',
-        cardColor: Colors.black,
-        canvasColor: darkcreamColor,
-        buttonColor: lightBluish,
-        accentColor: Colors.white,
-        primaryColor: whiteShaddey,
-        primaryColorLight: Colors.white,
-        progressIndicatorTheme:
-            const ProgressIndicatorThemeData(color: Colors.white),
-        appBarTheme: const AppBarTheme(
-          elevation: 0.0,
-          backgroundColor: Colors.black,
-          iconTheme: IconThemeData(color: Colors.white),
-        ),
-      );
+      brightness: Brightness.dark,
+      // fontFamily: GoogleFonts.poppins().fontFamily,
+      fontFamily: 'poppins',
+      cardColor: Colors.black,
+      canvasColor: darkcreamColor,
+      // buttonColor: lightBluish,
+      // accentColor: Colors.white,
+      hintColor: lightBluish, //button
+      highlightColor: Colors.white, //accent
+      primaryColor: whiteShaddey,
+      primaryColorLight: Colors.white,
+      progressIndicatorTheme:
+          const ProgressIndicatorThemeData(color: Colors.white),
+      appBarTheme: const AppBarTheme(
+        elevation: 0.0,
+        backgroundColor: Colors.black,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
+      iconTheme: const IconThemeData(color: Colors.white));
   static Color creamColor = const Color(0xfff5f5f5); //extra colors
   static Color darkcreamColor = Vx.gray800; //extra colors
   static Color darkBluish = const Color(0xff403b58);

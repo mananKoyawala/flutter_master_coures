@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: changeButton
                     ? BorderRadius.circular(50)
                     : BorderRadius.circular(10),
-                color: Theme.of(context).buttonColor,
+                color: Theme.of(context).hintColor,
                 child: InkWell(
                   // splashColor: const Color.fromARGB(0, 255, 255, 255),
                   borderRadius: BorderRadius.circular(10),
