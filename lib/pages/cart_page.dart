@@ -9,31 +9,33 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).canvasColor,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        // titleTextStyle: TextStyle(color: Colors.black),
-        // toolbarTextStyle: TextStyle(color: Colors.blue),
-        // foregroundColor: Colors.black,
-        title: Text(
-          "Cart",
-          style: TextStyle(color: Theme.of(context).primaryColorLight),
-        ),
-      ),
-      body: Column(children: const [
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.all(32.0),
-            child: CartList(),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Theme.of(context).canvasColor,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          // titleTextStyle: TextStyle(color: Colors.black),
+          // toolbarTextStyle: TextStyle(color: Colors.blue),
+          // foregroundColor: Colors.black,
+          title: Text(
+            "Cart",
+            style: TextStyle(color: Theme.of(context).primaryColorLight),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 32.0),
-          child: Divider(thickness: 2),
-        ),
-        _CartTotal(),
-      ]),
+        body: const Column(children: [
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(32.0),
+              child: CartList(),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 32.0),
+            child: Divider(thickness: 2),
+          ),
+          _CartTotal(),
+        ]),
+      ),
     );
   }
 }

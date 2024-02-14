@@ -54,31 +54,32 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // final dummyList = List.generate(10, (index) => CatalogModel.items[0]);
     final _cart = (VxState.store as MyStore).cart;
-    return Scaffold(
-      floatingActionButton: VxBuilder(
-        mutations: const {AddMutation, RemoveMutation},
-        builder: (context, _status, _) => VxBadge(
-          color: Vx.red500,
-          count: _cart.item.length,
-          size: 22,
-          textStyle: const TextStyle(fontSize: 10, color: Colors.white),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: FloatingActionButton(
-              onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-              backgroundColor: Theme.of(context).hintColor,
-              child: const Icon(
-                CupertinoIcons.cart,
-                color: Colors.white,
+    return SafeArea(
+      bottom: false,
+      child: Scaffold(
+        floatingActionButton: VxBuilder(
+          mutations: const {AddMutation, RemoveMutation},
+          builder: (context, _status, _) => VxBadge(
+            color: Vx.red500,
+            count: _cart.item.length,
+            size: 22,
+            textStyle: const TextStyle(fontSize: 10, color: Colors.white),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: FloatingActionButton(
+                onPressed: () =>
+                    Navigator.pushNamed(context, MyRoutes.cartRoute),
+                backgroundColor: Theme.of(context).hintColor,
+                child: const Icon(
+                  CupertinoIcons.cart,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
         ),
-      ),
-      backgroundColor: Theme.of(context).canvasColor,
-      body: SafeArea(
-        bottom: false,
-        child: Container(
+        backgroundColor: Theme.of(context).canvasColor,
+        body: Container(
           padding: const EdgeInsets.all(32),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

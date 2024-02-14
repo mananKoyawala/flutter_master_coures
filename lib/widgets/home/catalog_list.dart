@@ -17,13 +17,18 @@ class CatalogList extends StatelessWidget {
           // final catalog = CatalogModel.items[index];
           // final catalog = CatalogModel.getByID(2);
           final catalog = CatalogModel.items[index];
-          return InkWell(
-            onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => HomeDetailPage(catalog: catalog))),
-            child: CatalogItem(
-              catalog: catalog,
+          return Container(
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            child: InkWell(
+              splashColor: Colors.transparent,
+              borderRadius: BorderRadius.circular(15),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HomeDetailPage(catalog: catalog))),
+              child: CatalogItem(
+                catalog: catalog,
+              ),
             ),
           );
         });
@@ -37,10 +42,10 @@ class CatalogItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
       height: 150,
       width: 150,
       padding: const EdgeInsets.symmetric(vertical: 10),
+      // color: Colors.red,
       child: Row(children: [
         Hero(
             tag: Key(catalog.id.toString()),
@@ -92,8 +97,9 @@ class CatalogItem extends StatelessWidget {
         ))
       ]),
       decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(15)),
-          color: Theme.of(context).cardColor),
+        borderRadius: const BorderRadius.all(Radius.circular(15)),
+        color: Theme.of(context).cardColor,
+      ),
     );
   }
 }

@@ -8,8 +8,12 @@ class CatalogImage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          color: Theme.of(context).canvasColor,
+          borderRadius: BorderRadius.circular(10),
+        ),
         width: MediaQuery.of(context).size.width / 4,
-        color: Theme.of(context).canvasColor,
         child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.network(

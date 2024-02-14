@@ -8,42 +8,42 @@ class HomeDetailPage extends StatelessWidget {
   final Item catalog;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-      ),
-      backgroundColor: Theme.of(context).canvasColor,
-      bottomNavigationBar: Container(
-        color: Theme.of(context).cardColor,
-        child: Padding(
-          padding: const EdgeInsets.all(25.0),
-          child: ButtonBar(
-            alignment:
-                MainAxisAlignment.spaceBetween, //space betweem price and button
-            buttonPadding: EdgeInsets.zero,
-            children: [
-              Text(
-                "\$${catalog.price.toString()}",
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: Vx.red800),
-                textScaleFactor: 1.5,
-              ),
-              SizedBox(
-                height: 50,
-                width: 100,
-                child: AddToCart(
-                  catalog: catalog,
-                  isHome: false,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+        ),
+        backgroundColor: Theme.of(context).canvasColor,
+        bottomNavigationBar: Container(
+          color: Theme.of(context).cardColor,
+          child: Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: ButtonBar(
+              alignment: MainAxisAlignment
+                  .spaceBetween, //space betweem price and button
+              buttonPadding: EdgeInsets.zero,
+              children: [
+                Text(
+                  "\$${catalog.price.toString()}",
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Vx.red800),
+                  textScaleFactor: 1.5,
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: 50,
+                  width: 100,
+                  child: AddToCart(
+                    catalog: catalog,
+                    isHome: false,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-      body: SafeArea(
-        child: Column(children: [
+        body: Column(children: [
           Hero(
               tag: Key(catalog.id.toString()),
               child: SizedBox(
